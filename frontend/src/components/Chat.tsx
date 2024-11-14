@@ -13,7 +13,7 @@ const Chat: React.FC = () => {
   };
 
   const fetchBotResponse = async (message: string) => {
-    const response = await fetch('http://localhost:5000/chat', {
+    const response = await fetch('http://localhost:5000/chat', {  // 確認
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
