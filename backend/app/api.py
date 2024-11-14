@@ -1,15 +1,16 @@
 # api.py
+from flask import Blueprint, request, jsonify
 import requests
-from flask import Flask, request, jsonify
+from .config import GEMINI_API_URL
 
-app = Flask(__name__)
+api_bp = Blueprint('api', __name__)
 
-# Gemini APIのエンドポイント
-GEMINI_API_URL = "https://api.gemini.com/v1/your_endpoint"  # エンドポイントは適宜変更してください
-
-@app.route('/api/chat', methods=['POST'])
+@api_bp.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('input')
+    if not user_input:
+        return jsonify({"error": "Input is required"}), 400
+
     bot_response = get_bot_response(user_input)
     return jsonify({'response': bot_response})
 
@@ -22,9 +23,6 @@ def get_bot_response(user_input):
     
     if response.status_code == 200:
         data = response.json()
-        return data['response']  # APIのレスポンスから返答を取得
+        return data.get('response', "ボットの応答を取得できませんでした。")
     else:
         return "ボットの応答を取得できませんでした。"
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
