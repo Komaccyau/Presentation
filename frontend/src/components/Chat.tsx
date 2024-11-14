@@ -1,7 +1,7 @@
 // Chat.tsx
 import React, { useState } from 'react';
-import Input from '../components/Input';
-import Log from '../components/Log';
+import Input from './Input';
+import Log from './Log';
 import { Box } from '@mui/material';
 
 const Chat: React.FC = () => {
