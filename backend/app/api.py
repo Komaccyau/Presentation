@@ -6,6 +6,10 @@ from .utils import format_response, handle_error
 
 api_bp = Blueprint('api', __name__)
 
+@api_bp.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Welcome to the chatbot API!"})
+
 @api_bp.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('input')
