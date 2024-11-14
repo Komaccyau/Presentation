@@ -2,6 +2,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 from .config import GEMINI_API_URL
+from .utils import format_response, handle_error
 
 api_bp = Blueprint('api', __name__)
 
@@ -9,10 +10,10 @@ api_bp = Blueprint('api', __name__)
 def chat():
     user_input = request.json.get('input')
     if not user_input:
-        return jsonify({"error": "Input is required"}), 400
+        return jsonify(handle_error("Input is required")), 400
 
     bot_response = get_bot_response(user_input)
-    return jsonify({'response': bot_response})
+    return jsonify(format_response(bot_response))
 
 def get_bot_response(user_input):
     # Gemini APIを使ってボットの返答を取得
