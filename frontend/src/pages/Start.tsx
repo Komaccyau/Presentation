@@ -7,7 +7,7 @@ const Start: React.FC = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
-    navigate('/chat'); // '/chat' ルートに遷移
+    navigate('/chat');
   };
 
   return (

@@ -7,9 +7,21 @@ import { Box } from '@mui/material';
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<{ user: string; bot: string }[]>([]);
 
-  const handleSendMessage = (message: string) => {
-    const botReply = `あなたのメッセージは「${message}」ですね。`; // サンプルのボットの返答
+  const handleSendMessage = async (message: string) => {
+    const botReply = await fetchBotResponse(message);
     setMessages([...messages, { user: message, bot: botReply }]);
+  };
+
+  const fetchBotResponse = async (message: string) => {
+    const response = await fetch('http://localhost:5000/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ input: message }),
+    });
+    const data = await response.json();
+    return data.response;
   };
 
   return (
