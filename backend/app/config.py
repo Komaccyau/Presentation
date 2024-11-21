@@ -11,7 +11,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 
 gemini_pro = genai.GenerativeModel("gemini-pro")
-prompt = "質問内容を記載"
+prompt = "英語で返答をして、さらにその返答の返答を2種類考えて"
 response = gemini_pro.generate_content(prompt)
 print(response.text)
 
