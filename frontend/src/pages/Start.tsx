@@ -13,7 +13,7 @@ const Start: React.FC = () => {
 
   return (
     <div className="start-container">
-      <h1>英語学習アプリへようこそ！</h1>
+      <h1>英会話アプリへようこそ！</h1>
       <Button variant="contained" color="primary" onClick={handleStart}>
         スタート
       </Button>
