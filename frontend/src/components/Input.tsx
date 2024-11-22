@@ -1,6 +1,7 @@
 // Input.tsx
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import './Input.css';
 
 interface InputProps {
   onSendMessage: (message: string) => void;
@@ -18,7 +19,7 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', marginTop: '16px' }}>
+    <form className='input_message' onSubmit={handleSubmit}>
       <TextField
         label="メッセージを入力"
         variant="outlined"
