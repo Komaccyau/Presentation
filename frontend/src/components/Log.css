@@ -1,0 +1,6 @@
+/*Log.css*/
+.log_message {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
