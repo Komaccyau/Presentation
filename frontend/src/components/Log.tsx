@@ -12,7 +12,7 @@ interface LogProps {
 
 const Log: React.FC<LogProps> = ({ messages }) => {
   return (
-    <div style={{ maxHeight: '400px', overflowY: 'auto', marginBottom: '16px' }}>
+    <div className='log_message'>
       {messages.map((msg, index) => (
         <div key={index}>
           <strong>あなた:</strong> {msg.user}

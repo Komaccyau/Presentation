@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import './Start.css';
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Start: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '20%' }}>
+    <div className="start-container">
       <h1>英語学習アプリへようこそ！</h1>
       <Button variant="contained" color="primary" onClick={handleStart}>
         スタート
