@@ -1,0 +1,24 @@
+# 環境変数ファイル
+.env
+
+# Pythonのキャッシュファイル
+__pycache__/
+*.pyc
+
+# フレームワーク固有のファイル
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebookのチェックポイント
+.ipynb_checkpoints
+
+# IDEの設定ファイル
+.vscode/
+.idea/
+
+# その他の不要ファイル
+*.log
+*.pot
+*.py[cod]
+*.pyo
