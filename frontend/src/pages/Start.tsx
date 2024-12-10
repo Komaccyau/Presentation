@@ -17,11 +17,11 @@ const Start: React.FC = () => {
       <Button variant="contained" color="primary" onClick={handleStart}>
         スタート
       </Button>
-      <div className='difficulty-level'>
+      {/* <div className='difficulty-level'>
         <Button variant="contained" color="primary">基礎知識レベル</Button>
         <Button variant="contained" color="primary">高校入試レベル</Button>
         <Button variant="contained" color="primary">大学入試レベル</Button>
-      </div>
+      </div> */}
     </div>
   );
 };
