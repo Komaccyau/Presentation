@@ -31,7 +31,6 @@ const Chat: React.FC = () => {
 
   return (
     <Box sx={{ padding: 2 }}>
-      <h2>チャット</h2>
       <Log messages={messages} />
       <Input onSendMessage={handleSendMessage} />
     </Box>
