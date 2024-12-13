@@ -40,6 +40,9 @@ const Chat: React.FC = () => {
       <Box sx={{ flex: 1, overflowY: 'auto', backgroundColor: '#e6e6fa' }}>
         <Log messages={messages} />
       </Box>
+      <Box>
+        <Select />
+      </Box>
       <Box sx={{ 
         display: 'flex',
         justifyContent: 'center', // 中央に配置

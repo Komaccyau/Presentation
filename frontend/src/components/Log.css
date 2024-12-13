@@ -12,7 +12,7 @@
 .input_log {
     display: flex;
     justify-content: flex-end;
-    margin-right: 20vh;
+    margin-right: 40vh;
     font-size: 20px;
     margin-top: 10px;
 }
@@ -20,7 +20,7 @@
 .bot_log {
     display: flex;
     justify-content: flex-start;
-    margin-left: 20vh;
+    margin-left: 40vh;
     font-size: 20px;
     margin-top: 10px;
 }
