@@ -1,4 +1,5 @@
 // Log.tsx
+import './Log.css'
 import React from 'react';
 
 interface Message {
