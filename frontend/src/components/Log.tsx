@@ -15,9 +15,10 @@ const Log: React.FC<LogProps> = ({ messages }) => {
     <div className='log_message'>
       {messages.map((msg, index) => (
         <div key={index}>
-          {msg.user} <strong>:あなた</strong>
+          {msg.user} <strong className='chat'>:あなた</strong>
           <br />
-          <strong>ボット:</strong> {msg.bot}
+          <br />
+          <strong className='chat'>ボット:</strong> {msg.bot}
           <br />
           <br />
         </div>

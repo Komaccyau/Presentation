@@ -4,3 +4,7 @@
     overflow-y: auto;
     margin-bottom: 16px;
 }
+
+.chat {
+    font-size: 20px;
+}
