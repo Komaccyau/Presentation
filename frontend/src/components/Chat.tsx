@@ -13,7 +13,7 @@ const Chat: React.FC = () => {
   };
 
   const fetchBotResponse = async (message: string) => {
-    const response = await fetch('http://localhost:5000/chat', {  // 確認
+    const response = await fetch('http://localhost:5000/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,9 +30,26 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <Box sx={{ padding: 2 }}>
-      <Log messages={messages} />
-      <Input onSendMessage={handleSendMessage} />
+    <Box sx={{
+      display: 'flex', 
+      flexDirection: 'column', 
+      height: '100vh',
+      width: '100vw',
+      position: 'relative' // 位置を相対的にする
+    }}>
+      <Box sx={{ flex: 1, overflowY: 'auto', backgroundColor: '#e6e6fa' }}>
+        <Log messages={messages} />
+      </Box>
+      <Box sx={{ 
+        display: 'flex',
+        justifyContent: 'center', // 中央に配置
+        marginTop: 'auto',
+        width: '100%', // 幅を100%に設定
+      }}>
+        <Box sx={{ width: '80vw' , marginBottom: '2vh' }}> {/* Inputの幅を指定 */}
+          <Input onSendMessage={handleSendMessage} />
+        </Box>
+      </Box>
     </Box>
   );
 };
