@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Input from './Input';
 import Log from './Log';
+import Options from './Options'
 import { Box } from '@mui/material';
 
 const Chat: React.FC = () => {
@@ -41,7 +42,7 @@ const Chat: React.FC = () => {
         <Log messages={messages} />
       </Box>
       <Box>
-        <Select />
+        <Options />
       </Box>
       <Box sx={{ 
         display: 'flex',
