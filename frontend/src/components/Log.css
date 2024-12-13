@@ -1,9 +1,9 @@
 /*Log.css*/
-.log_message {
+/* .log_message {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 16px;
-}
+} */
 
 .chat_log {
     margin-bottom: 16px;
@@ -12,11 +12,13 @@
 .input_log {
     display: flex;
     justify-content: flex-end;
-    margin-right: 10vh;
+    margin-right: 20vh;
+    font-size: 20px;
 }
 
 .bot_log {
     display: flex;
     justify-content: flex-start;
-    margin-left: 10vh;
+    margin-left: 20vh;
+    font-size: 20px;
 }
