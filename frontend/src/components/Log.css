@@ -4,3 +4,19 @@
     overflow-y: auto;
     margin-bottom: 16px;
 }
+
+.chat_log {
+    margin-bottom: 16px;
+}
+
+.input_log {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10vh;
+}
+
+.bot_log {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10vh;
+}

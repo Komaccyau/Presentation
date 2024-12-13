@@ -14,11 +14,11 @@ const Log: React.FC<LogProps> = ({ messages }) => {
   return (
     <div className='log_message'>
       {messages.map((msg, index) => (
-        <div key={index} style={{ marginBottom: '16px' }}>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '10vw' }}>
+        <div className='chat_log' key={index}>
+          <div className='input_log'>
             <strong>{msg.user}</strong>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-start', marginLeft: '10vw' }}>
+          <div className='bot_log'>
             <strong>{msg.bot}</strong>
           </div>
         </div>
