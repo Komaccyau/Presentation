@@ -18,7 +18,7 @@ const Log: React.FC<LogProps> = ({ messages }) => {
           {msg.user} <strong>:あなた</strong>
           <br />
           <strong>ボット:</strong> {msg.bot}
-          <hr />
+          <br />
         </div>
       ))}
     </div>
