@@ -19,6 +19,12 @@ def chat():
     bot_response = get_bot_response(user_input)
     return jsonify(format_response(bot_response))
 
+@api_bp.route('/dummy', methods=['POST'])
+def dummy_api():
+    user_input = request.json.get('input')  # フロントエンドからの入力を取得
+    # 固定の応答を返す
+    return jsonify({"response": "This is a dummy API."})
+
 def get_bot_response(user_input):
     # Gemini APIを使ってボットの返答を取得
     payload = {
