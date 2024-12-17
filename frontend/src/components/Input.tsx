@@ -10,7 +10,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({ onSendMessage }) => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputValue.trim()) {
       onSendMessage(inputValue);
@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
   };
 
   const startVoiceInput = () => {
-    const recognition = new (window.SpeechRecognition || window.webkit.SpeechRecognition)();
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'ja-JP'; // 日本語を設定
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
