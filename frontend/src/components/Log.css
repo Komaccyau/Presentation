@@ -6,29 +6,53 @@
 }
 
 .input_log {
+    position: relative;
     display: flex;
     justify-content: flex-end;
     margin-right: 40vh;
     margin-left: 40vh;
-    font-size: 20px;
     margin-top: 10px;
-    position: relative; /* 吹き出しの三角形のために必要 */
-    padding: 10px; /* 吹き出し内の余白 */
+    padding: 7px;
+    min-width: 120px;
+    max-width: 100%;
     border-radius: 10px;
-    background-color: #e1f5fe; /* ユーザーの吹き出し色 */
-    max-width: 100%; /* 吹き出しの最大幅 */
-    position: relative; /* 吹き出しの相対位置 */
+    font-size: 20px;
+    background-color: #ffd0f7;
+    text-align: left;
 }
 
+.input_log:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
+
 .bot_log {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     margin-right: 40vh;
     margin-left: 40vh;
-    font-size: 20px;
     margin-top: 10px;
-    position: relative; /* 吹き出しの三角形のために必要 */
-    padding: 10px;
+    padding: 7px;
+    min-width: 120px;
+    max-width: 100%;
     border-radius: 10px;
-    background-color: #f1f1f1; /* ボットの吹き出し色 */
+    font-size: 20px;
+    background-color: #c4ffc9;
+    text-align: right;
 }
+
+.bot_log:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
