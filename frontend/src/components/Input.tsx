@@ -1,6 +1,7 @@
 // Input.tsx
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import './Input.css';
 
 interface InputProps {
@@ -20,7 +21,7 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
 
   const startVoiceInput = () => {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'ja-JP'; // 日本語を設定
+    recognition.lang = 'en-US'; // 英語を設定
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
       setInputValue(transcript);
@@ -34,6 +35,9 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
 
   return (
     <form className='input_message' onSubmit={handleSubmit}>
+      <Button variant="contained" color="secondary" onClick={startVoiceInput} style={{ marginRight: '8px' }}>
+        <KeyboardVoiceIcon />
+      </Button>
       <TextField
         label="メッセージを入力"
         variant="outlined"
@@ -43,9 +47,6 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
       />
       <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '8px' }}>
         送信
-      </Button>
-      <Button variant="contained" color="secondary" onClick={startVoiceInput} style={{ marginLeft: '8px' }}>
-        音声入力
       </Button>
     </form>
   );
