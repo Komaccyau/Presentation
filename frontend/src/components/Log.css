@@ -1,6 +1,26 @@
 /*Log.css*/
-.log_message {
+/* .log_message {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 16px;
+} */
+
+.chat_log {
+    margin-bottom: 16px;
+}
+
+.input_log {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40vh;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.bot_log {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40vh;
+    font-size: 20px;
+    margin-top: 10px;
 }

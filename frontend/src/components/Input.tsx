@@ -18,6 +18,20 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
     }
   };
 
+  const startVoiceInput = () => {
+    const recognition = new (window.SpeechRecognition || window.webkit.SpeechRecognition)();
+    recognition.lang = 'ja-JP'; // 日本語を設定
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      const transcript = event.results[0][0].transcript;
+      setInputValue(transcript);
+      handleSubmit(new Event('submit')); // 音声入力後にメッセージを送信
+    };
+    recognition.onerror = (event) => {
+      console.error("Speech recognition error", event);
+    };
+    recognition.start();
+  };
+
   return (
     <form className='input_message' onSubmit={handleSubmit}>
       <TextField
@@ -29,6 +43,9 @@ const Input: React.FC<InputProps> = ({ onSendMessage }) => {
       />
       <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '8px' }}>
         送信
+      </Button>
+      <Button variant="contained" color="secondary" onClick={startVoiceInput} style={{ marginLeft: '8px' }}>
+        音声入力
       </Button>
     </form>
   );

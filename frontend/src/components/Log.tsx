@@ -1,4 +1,5 @@
 // Log.tsx
+import './Log.css'
 import React from 'react';
 
 interface Message {
@@ -14,11 +15,13 @@ const Log: React.FC<LogProps> = ({ messages }) => {
   return (
     <div className='log_message'>
       {messages.map((msg, index) => (
-        <div key={index}>
-          <strong>あなた:</strong> {msg.user}
-          <br />
-          <strong>ボット:</strong> {msg.bot}
-          <hr />
+        <div className='chat_log' key={index}>
+          <div className='input_log'>
+            <strong>{msg.user}</strong>
+          </div>
+          <div className='bot_log'>
+            <strong>{msg.bot}</strong>
+          </div>
         </div>
       ))}
     </div>
