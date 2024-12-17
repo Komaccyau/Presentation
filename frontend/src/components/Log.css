@@ -29,6 +29,7 @@
     margin-top: -15px;
     border: 15px solid transparent;
     border-left: 15px solid #e0edff;
+    text-align: left;
   }
 
 .bot_log {

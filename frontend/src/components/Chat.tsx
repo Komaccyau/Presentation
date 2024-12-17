@@ -46,7 +46,7 @@ const Chat: React.FC = () => {
       <Box sx={{ flex: 1, overflowY: 'auto', backgroundColor: '#e6e6fa' }}>
         <Log messages={messages} />
       </Box>
-      <Box sx={{backgroundColor: '#e6e6fa'}}>
+      <Box sx={{ paddingBottom: '2vh' , backgroundColor: '#e6e6fa'}}>
         <Options toggleApiUsage={toggleApiUsage} useDummyApi={useDummyApi} /> {/* オプションにAPI選択機能を追加 */}
       </Box>
       <Box sx={{ 
