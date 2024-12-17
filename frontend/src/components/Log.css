@@ -20,9 +20,6 @@
     position: relative; /* 吹き出しの相対位置 */
 }
 
-
-
-
 .bot_log {
     display: flex;
     justify-content: flex-start;
@@ -34,14 +31,4 @@
     padding: 10px;
     border-radius: 10px;
     background-color: #f1f1f1; /* ボットの吹き出し色 */
-}
-
-.bot_log::after {
-    content: '';
-    position: absolute;
-    bottom: 100%; /* 吹き出しの上に三角形を表示 */
-    right: 10px; /* ボットの三角形の位置 */
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #f1f1f1 transparent; /* ボットの吹き出し */
 }
