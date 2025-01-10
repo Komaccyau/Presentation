@@ -13,27 +13,43 @@ def home():
 @api_bp.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('input')
+    level = request.json.get('level')  # レベルを取得
     if not user_input:
         return jsonify(handle_error("Input is required")), 400
 
-    bot_response = get_bot_response(user_input)
+    bot_response = get_bot_response(user_input, level)  # レベルを渡す
     return jsonify(format_response(bot_response))
 
 @api_bp.route('/dummy', methods=['POST'])
 def dummy_api():
-    user_input = request.json.get('input')  # フロントエンドからの入力を取得
-    # 固定の応答を返す
+    user_input = request.json.get('input')
     return jsonify({"response": "This is a dummy API."})
 
-def get_bot_response(user_input):
+def get_bot_response(user_input, level):
     # Gemini APIを使ってボットの返答を取得
     payload = {
-        "input": user_input
+        "input": user_input,
+        "level": level  # レベルをペイロードに追加
     }
     response = requests.post(GEMINI_API_URL, json=payload)
     
     if response.status_code == 200:
         data = response.json()
-        return data.get('response', "ボットの応答を取得できませんでした。")
+        return format_response_data(data)  # フォーマットされたデータを返す
     else:
-        return "ボットの応答を取得できませんでした。"
+        return "Failed to retrieve bot response."
+
+def format_response_data(data):
+    question = data.get('question', "What is your question?")
+    answer = data.get('answer', "I don't know the answer.")
+    follow_up_1 = data.get('follow_up_1', "What do you think?")
+    follow_up_2 = data.get('follow_up_2', "Can you elaborate on that?")
+
+    formatted_response = {
+        "question": question,
+        "answer": answer,
+        "follow_up_1": follow_up_1,
+        "follow_up_2": follow_up_2
+    }
+    
+    return formatted_response
