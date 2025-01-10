@@ -17,7 +17,7 @@
     max-width: 100%;
     border-radius: 10px;
     font-size: 20px;
-    background-color: #ffd0f7;
+    /* background-color: #ffd0f7; */
     text-align: left;
 }
 
@@ -44,7 +44,7 @@
     max-width: 100%;
     border-radius: 10px;
     font-size: 20px;
-    background-color: #c4ffc9;
+    /* background-color: #c4ffc9; */
     text-align: right;
 }
 
