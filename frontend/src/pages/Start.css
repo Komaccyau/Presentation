@@ -2,7 +2,11 @@
 .start-container {
   text-align: center;
   margin: auto;
-  padding-top: 240px;
+  padding-top: 200px;
+}
+
+.start-container > .MuiFormControl-root {
+  margin-bottom: 20px; /* 入力欄とスタートボタンの間隔を広げる */
 }
 
 /* .difficulty-level {
