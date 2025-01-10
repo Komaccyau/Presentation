@@ -31,7 +31,6 @@ const Start: React.FC = () => {
       <Button variant="contained" color="primary" onClick={handleStart}>
         スタート
       </Button>
-      
     </div>
   );
 };
