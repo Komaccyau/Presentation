@@ -19,10 +19,7 @@ def chat():
     bot_response = get_bot_response(user_input, level)  # レベルを渡す
     return jsonify(format_response(bot_response))
 
-@api_bp.route('/dummy', methods=['POST'])
-def dummy_api():
-    user_input = request.json.get('input')
-    return jsonify({"response": "This is a dummy API."})
+
 
 def get_bot_response(user_input, level):
     # プロンプトを設定
