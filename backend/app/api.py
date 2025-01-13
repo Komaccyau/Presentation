@@ -16,9 +16,11 @@ def chat():
     if not user_input:
         return jsonify(handle_error("Input is required")), 400
 
-    bot_response = get_bot_response(user_input, level)  # レベルを渡す
-    return jsonify(format_response(bot_response))
-
+    try:
+        bot_response = get_bot_response(user_input, level)  # レベルを渡す
+        return jsonify(format_response(bot_response))
+    except Exception as e:
+        return jsonify(handle_error(str(e))), 500  # エラーメッセージを返す
 
 
 def get_bot_response(user_input, level):
