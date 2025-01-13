@@ -1,7 +1,6 @@
 # api.py
 from flask import Blueprint, request, jsonify
-import requests
-from .config import GEMINI_API_URL
+from .config import gemini_pro  # gemini_proをインポート
 from .utils import format_response, handle_error
 
 api_bp = Blueprint('api', __name__)
@@ -26,28 +25,30 @@ def dummy_api():
     return jsonify({"response": "This is a dummy API."})
 
 def get_bot_response(user_input, level):
+    # プロンプトを設定
+    prompt = (
+        f"You are a helpful assistant. "
+        f"Please respond to the following question in English: {user_input} "
+        f"Then, provide two possible follow-up responses that could continue the conversation."
+    )
+
     # Gemini APIを使ってボットの返答を取得
-    payload = {
-        "input": user_input,
-        "level": level  # レベルをペイロードに追加
-    }
-    response = requests.post(GEMINI_API_URL, json=payload)
-    
-    if response.status_code == 200:
-        data = response.json()
-        return format_response_data(data)  # フォーマットされたデータを返す
+    response = gemini_pro.generate_content(prompt)  # プロンプトを使って応答を生成
+
+    if response:
+        return format_response_data(response.text)  # フォーマットされたデータを返す
     else:
         return "Failed to retrieve bot response."
 
-def format_response_data(data):
-    question = data.get('question', "What is your question?")
-    answer = data.get('answer', "I don't know the answer.")
-    follow_up_1 = data.get('follow_up_1', "What do you think?")
-    follow_up_2 = data.get('follow_up_2', "Can you elaborate on that?")
+def format_response_data(response_text):
+    # 返答を分割して、返信とその返信の返信を取得します
+    responses = response_text.split("\n")  # 改行で分割と仮定
+    reply = responses[0] if len(responses) > 0 else "No reply."
+    follow_up_1 = responses[1] if len(responses) > 1 else "No follow-up response 1."
+    follow_up_2 = responses[2] if len(responses) > 2 else "No follow-up response 2."
 
     formatted_response = {
-        "question": question,
-        "answer": answer,
+        "reply": reply,
         "follow_up_1": follow_up_1,
         "follow_up_2": follow_up_2
     }
