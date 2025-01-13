@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import Input from './Input';
 import Log from './Log';
-import Options from './Options';
 import { Box } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 const Chat: React.FC = () => {
+  const location = useLocation();
+  const { level } = location.state; // Start.tsxから渡されたレベルを取得
   const [messages, setMessages] = useState<{ user: string; bot: string }[]>([]);
-  const [useDummyApi, setUseDummyApi] = useState(false); // ダミーAPIを使用するかの状態管理
 
   const handleSendMessage = async (message: string) => {
     const botReply = await fetchBotResponse(message);
@@ -15,25 +16,29 @@ const Chat: React.FC = () => {
   };
 
   const fetchBotResponse = async (message: string) => {
+    const endpoint = 'http://localhost:5000/chat'; // バックエンドのチャットエンドポイント
+
     try {
-      const endpoint = useDummyApi ? 'http://localhost:5000/dummy' : 'http://localhost:5000/chat'; // 使用するAPIを選択
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input: message }),
+        body: JSON.stringify({
+          input: message, // ユーザーの入力
+          level: level, // 選択されたレベルを含める
+        }),
       });
 
       const data = await response.json();
-      return data.response || "エラーが発生しました。"; // ダミーAPIの応答を処理
+      if (data.reply) {
+        return `${data.reply}\n\n返信の返信①: ${data.follow_up_1}\n返信の返信②: ${data.follow_up_2}`; // フォーマットされた応答を返す
+      } else {
+        return "エラーが発生しました。"; // エラーハンドリング
+      }
     } catch {
-      return "通信エラーが発生しました。"; // エラーハンドリングの追加
+      return "通信エラーが発生しました。"; // 通信エラーのハンドリング
     }
-  };
-
-  const toggleApiUsage = () => {
-    setUseDummyApi(prev => !prev); // ダミーAPIの使用を切り替える
   };
 
   return (
@@ -45,9 +50,6 @@ const Chat: React.FC = () => {
     }}>
       <Box sx={{ flex: 1, overflowY: 'auto', backgroundColor: '#e6e6fa' }}>
         <Log messages={messages} />
-      </Box>
-      <Box sx={{ paddingBottom: '1vh' , backgroundColor: 'white'}}>
-        <Options toggleApiUsage={toggleApiUsage} useDummyApi={useDummyApi} /> {/* オプションにAPI選択機能を追加 */}
       </Box>
       <Box sx={{ 
         display: 'flex',
