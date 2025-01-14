@@ -38,7 +38,7 @@ const Chat: React.FC = () => {
 
       const data = await response.json();
       if (data.reply) {
-        return `${data.reply}\n\n返信の返信①: ${data.follow_up_1 || 'フォローアップ情報がありません'}\n返信の返信②: ${data.follow_up_2 || 'フォローアップ情報がありません'}`; // フォーマットされた応答を返す
+        return `${data.reply}\n\n返信の返信１: ${data.follow_up_1 || 'フォローアップ情報がありません'}\n返信の返信２: ${data.follow_up_2 || 'フォローアップ情報がありません'}`; // フォーマットされた応答を返す
       } else {
         console.warn('Unexpected response format:', data); // 予期しないレスポンス形式の警告
         return "エラーが発生しました。"; // エラーハンドリング
