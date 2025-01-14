@@ -27,9 +27,9 @@ def chat():
 def get_bot_response(user_input, level):
     # プロンプトを設定
     prompt = (
-        f"You are a helpful assistant. "
-        f"Please respond to the following question in English: {user_input} "
-        f"Then, provide two possible follow-up responses that could continue the conversation."
+        f"ユーザーからのメッセージに対しての返答を英語で返してください。: {user_input}"
+        f"ユーザーからのメッセージに対しての返答に対する返答例を2種類作成してください。"
+        f"その時の返答例は更に次の会話が続くように会話を広げるような英文を期待しています。"
     )
 
     # Gemini APIを使ってボットの返答を取得
