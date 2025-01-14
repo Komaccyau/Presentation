@@ -1,4 +1,3 @@
-// Chat.tsx
 import React, { useState } from 'react';
 import Input from './Input';
 import Log from './Log';
@@ -30,13 +29,22 @@ const Chat: React.FC = () => {
         }),
       });
 
+      // ステータスコードを確認
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Backend error:', errorData); // バックエンドのエラーをコンソールに出力
+        return `エラーが発生しました: ${errorData.error || '不明なエラー'}`; // エラーメッセージを返す
+      }
+
       const data = await response.json();
       if (data.reply) {
         return `${data.reply}\n\n返信の返信①: ${data.follow_up_1}\n返信の返信②: ${data.follow_up_2}`; // フォーマットされた応答を返す
       } else {
+        console.warn('Unexpected response format:', data); // 予期しないレスポンス形式の警告
         return "エラーが発生しました。"; // エラーハンドリング
       }
-    } catch {
+    } catch (error) {
+      console.error('Fetch error:', error); // 通信エラーをコンソールに出力
       return "通信エラーが発生しました。"; // 通信エラーのハンドリング
     }
   };
