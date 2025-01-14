@@ -24,13 +24,13 @@ def chat():
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
 
-def get_bot_response(user_input, level):
+def get_bot_response(user_input, level, follow_up_1, follow_up_2):
     # プロンプトを設定
     prompt = (
         f"You are an English teacher."
         f"YYou are going to teach English conversation to your students according to their level.: {level}"
         f"Please respond to the student's conversation in English.: {user_input} "
-        f"In addition, please provide two examples of how you would respond. "
+        f"In addition, please provide two examples of how you would respond.: {follow_up_1, follow_up_2} "
         # f"You are a helpful assistant. "
         # f"Please respond to the following question in English: {user_input} "
         # f"Then, provide two possible follow-up responses that could continue the conversation."
