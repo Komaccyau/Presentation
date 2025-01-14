@@ -38,14 +38,17 @@ def get_bot_response(user_input, level):
     if response:
         return format_response_data(response.text)  # フォーマットされたデータを返す
     else:
-        return "Failed to retrieve bot response."
+        return {"reply": "Failed to retrieve bot response.", "follow_up_1": "", "follow_up_2": ""}
+
 
 def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
     responses = response_text.split("\n")  # 改行で分割と仮定
-    reply = responses[0] if len(responses) > 0 else "No reply."
-    follow_up_1 = responses[1] if len(responses) > 1 else "No follow-up response 1."
-    follow_up_2 = responses[2] if len(responses) > 2 else "No follow-up response 2."
+
+    # レスポンスが足りない場合のデフォルト値を設定
+    reply = responses[0].strip() if len(responses) > 0 else "No reply."
+    follow_up_1 = responses[1].strip() if len(responses) > 1 else "No follow-up response 1."
+    follow_up_2 = responses[2].strip() if len(responses) > 2 else "No follow-up response 2."
 
     formatted_response = {
         "reply": reply,
