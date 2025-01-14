@@ -12,15 +12,16 @@ def home():
 @api_bp.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('input')
-    level = request.json.get('level')  # レベルを取得
+    level = request.json.get('level')
+
     if not user_input:
-        return jsonify(handle_error("Input is required")), 400
+        return jsonify({"error": "Input is required"}), 400
 
     try:
-        bot_response = get_bot_response(user_input, level)  # レベルを渡す
-        return jsonify(format_response(bot_response))
+        bot_response = get_bot_response(user_input, level)
+        return jsonify(bot_response)
     except Exception as e:
-        return jsonify(handle_error(str(e))), 500  # エラーメッセージを返す
+        return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
 
 def get_bot_response(user_input, level):
