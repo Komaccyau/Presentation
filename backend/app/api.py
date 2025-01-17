@@ -27,10 +27,7 @@ def chat():
 def get_bot_response(user_input, level):
     # プロンプトを設定
     prompt = (
-        f"英会話アプリケーションです。\n"
-        f"{level}に合わせた会話をしなさい。\n"
-        f"{user_input}に対する返答を英語で答えなさい。\n"
-        f"また返答に対する返答の例を英語で答えなさい。"
+        f"English Conversation Application. Have a conversation with {level}. Answer to {user_input} in English. Also, give an example of a response to the {user_input}."
     )
 
     # Gemini APIを使ってボットの返答を取得
