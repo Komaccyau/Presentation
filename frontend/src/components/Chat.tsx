@@ -18,34 +18,34 @@ const Chat: React.FC = () => {
     const endpoint = 'http://127.0.0.1:5000/chat'; // バックエンドのチャットエンドポイントを修正
 
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          input: message, // ユーザーの入力
-          level: level, // 選択されたレベルを含める
-        }),
-      });
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                input: message, // ユーザーの入力
+                level: level, // 選択されたレベルを含める
+            }),
+        });
 
-      // ステータスコードを確認
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({})); // ここでエラー時のデフォルト値を設定
-        console.error('Backend error:', errorData); // バックエンドのエラーをコンソールに出力
-        return `エラーが発生しました: ${errorData.error || '不明なエラー'}`; // エラーメッセージを返す
-      }
+        // ステータスコードを確認
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({})); // ここでエラー時のデフォルト値を設定
+            console.error('Backend error:', errorData); // バックエンドのエラーをコンソールに出力
+            return `エラーが発生しました: ${errorData.error || '不明なエラー'}`; // エラーメッセージを返す
+        }
 
-      const data = await response.json();
-      if (data.answer) {
-        return `${data.answer || '何もないよぅ'}\n\n\n返信例: ${data.follow_up || '何もないよぅ'}`; // フォーマットされた応答を返す
-      } else {
-        console.warn('Unexpected response format:', data); // 予期しないレスポンス形式の警告
-        return "エラーが発生しました。"; // エラーハンドリング
-      }
+        const data = await response.json();
+        if (data.answer) {
+            return `${data.answer}\n\n返信例:\n${data.follow_up}`; // フォーマットされた応答を返す
+        } else {
+            console.warn('Unexpected response format:', data); // 予期しないレスポンス形式の警告
+            return "エラーが発生しました。"; // エラーハンドリング
+        }
     } catch (error) {
-      console.error('Fetch error:', error); // 通信エラーをコンソールに出力
-      return "通信エラーが発生しました。"; // 通信エラーのハンドリング
+        console.error('Fetch error:', error); // 通信エラーをコンソールに出力
+        return "通信エラーが発生しました。"; // 通信エラーのハンドリング
     }
   };
 
