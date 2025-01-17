@@ -23,17 +23,13 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
-
-def get_bot_response(user_input, level, follow_up_1, follow_up_2):
+def get_bot_response(user_input, level):
     # プロンプトを設定
     prompt = (
         f"You are an English teacher."
-        f"You are going to teach English conversation to your students according to their level.: {level}"
-        f"Please respond to the student's conversation in English.: {user_input} "
-        f"In addition, please provide two examples of how you would respond.: {follow_up_1, follow_up_2} "
-        # f"You are a helpful assistant. "
-        # f"Please respond to the following question in English: {user_input} "
-        # f"Then, provide two possible follow-up responses that could continue the conversation."
+        f"You are going to teach English conversation to your students according to their level: {level}. "
+        f"Please respond to the student's conversation in English: {user_input}. "
+        f"In addition, please provide two examples of how you would respond."
     )
 
     # Gemini APIを使ってボットの返答を取得
@@ -42,7 +38,7 @@ def get_bot_response(user_input, level, follow_up_1, follow_up_2):
     if response:
         return format_response_data(response.text)  # フォーマットされたデータを返す
     else:
-        return "Failed to retrieve bot response."
+        return {"error": "Failed to retrieve bot response."}
 
 def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
