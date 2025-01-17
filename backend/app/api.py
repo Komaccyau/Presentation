@@ -28,10 +28,10 @@ def chat():
 def get_bot_response(user_input, level, follow_up_1, follow_up_2):
     # プロンプトを設定
     prompt = (
-        f"You are an English teacher. "
-        f"You are going to teach English conversation to your students according to their level: {level}. "
-        f"Please respond to the student's conversation in English: {user_input}. "
-        f"In addition, please provide two examples of how you would respond."
+        f"貴方は英会話教師です。
+        {level}に合わせた会話をしてください。
+        {user_input}に対しての返答を英語でしてください。
+        また返答に対する返答の例を{follow_up_1}と{follow_up_2}の2種類考えてください。 "
     )
 
     # Gemini APIを使ってボットの返答を取得
