@@ -15,7 +15,7 @@ const Chat: React.FC = () => {
   };
 
   const fetchBotResponse = async (message: string) => {
-    const endpoint = 'http://10.192.73.3:5000/chat'; // バックエンドのチャットエンドポイントを修正
+    const endpoint = 'http://127.0.0.1:5000chat'; // バックエンドのチャットエンドポイントを修正
 
     try {
         const response = await fetch(endpoint, {
