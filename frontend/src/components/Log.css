@@ -18,7 +18,7 @@
     border-radius: 10px;
     font-size: 20px;
     background-color: #8299ff;
-    text-align: left;
+    text-align: right;
 }
 
 .input_log:before {
@@ -29,7 +29,6 @@
     margin-top: -15px;
     border: 15px solid transparent;
     border-left: 15px solid #e0edff;
-    text-align: left;
   }
 
 .bot_log {
@@ -45,7 +44,7 @@
     border-radius: 10px;
     font-size: 20px;
     /* background-color: #c4ffc9; */
-    text-align: right;
+    text-align: left;
 }
 
 .bot_log:before {
