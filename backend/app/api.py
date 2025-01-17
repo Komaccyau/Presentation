@@ -22,6 +22,7 @@ def chat():
         bot_response = get_bot_response(user_input, level, "", "")
         return jsonify(bot_response)
     except Exception as e:
+        print(f"Error in chat endpoint: {str(e)}")  # エラーメッセージをログに出力
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
 def get_bot_response(user_input, level, follow_up_1, follow_up_2):
