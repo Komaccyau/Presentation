@@ -27,9 +27,9 @@ def chat():
 def get_bot_response(user_input, level):
     # プロンプトを設定
     prompt = (
-        f"貴方は英会話教師です。\n"
+        f"英会話アプリケーションです。\n"
         f"{level}に合わせた会話をしてください。\n"
-        f"{user_input}に対する返答を考えてください。\n"
+        f"{user_input}に対する返答を英語で考えてください。\n"
         f"また返答に対する返答の例を考えてください。"
     )
 
