@@ -18,15 +18,16 @@ def chat():
         return jsonify({"error": "Input is required"}), 400
 
     try:
-        bot_response = get_bot_response(user_input, level)
+        # follow_up_1とfollow_up_2を空の値で初期化
+        bot_response = get_bot_response(user_input, level, "", "")
         return jsonify(bot_response)
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
-def get_bot_response(user_input, level):
+def get_bot_response(user_input, level, follow_up_1, follow_up_2):
     # プロンプトを設定
     prompt = (
-        f"You are an English teacher."
+        f"You are an English teacher. "
         f"You are going to teach English conversation to your students according to their level: {level}. "
         f"Please respond to the student's conversation in English: {user_input}. "
         f"In addition, please provide two examples of how you would respond."
