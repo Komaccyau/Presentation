@@ -30,8 +30,7 @@ def get_bot_response(user_input, level):
         f"英会話アプリケーションです。\n"
         f"{level}に合わせた会話をしてください。\n"
         f"{user_input}に対する返答を英語で考えてください。\n"
-        f"返答は教師の名前を含めず、具体的な内容を英語で答えてください。\n"
-        f"また、返答に対する返答の例を英語で答えてください。"
+        f"また返答に対する返答の例を考えてください。"
     )
 
     # Gemini APIを使ってボットの返答を取得
@@ -46,11 +45,11 @@ def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
     responses = response_text.split("\n")  # 改行で分割と仮定
     answer = responses[0] if len(responses) > 0 else "No reply."
-    follow_up = responses[1] if len(responses) > 1 else "No follow-up response."
+    follow_up = responses[1] if len(responses) > 1 else "No follow-up response."  # フォローアップレスポンスを1つに変更
 
     formatted_response = {
-        "answer": answer.strip(),  # 余分な空白を削除
-        "follow_up": follow_up.strip()  # 余分な空白を削除
+        "answer": answer,  # user_inputに対する返答を設定
+        "follow_up": follow_up  # フォローアップレスポンスを1つに変更
     }
     
     return formatted_response
