@@ -18,24 +18,23 @@ def chat():
         return jsonify({"error": "Input is required"}), 400
 
     try:
-        # follow_up_1とfollow_up_2を空の値で初期化
-        bot_response = get_bot_response(user_input, level, "", "")
+        bot_response = get_bot_response(user_input, level)
         return jsonify(bot_response)
     except Exception as e:
         print(f"Error in chat endpoint: {str(e)}")  # エラーメッセージをログに出力
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
-def get_bot_response(user_input, level, follow_up_1, follow_up_2):
+def get_bot_response(user_input, level):
     # プロンプトを設定
     prompt = (
-        f"貴方は英会話教師です。
-        {level}に合わせた会話をしてください。
-        {user_input}に対しての返答を英語でしてください。
-        また返答に対する返答の例を{follow_up_1}と{follow_up_2}の2種類考えてください。 "
+        f"貴方は英会話教師です。\n"
+        f"{level}に合わせた会話をしてください。\n"
+        f"{user_input}に対する返答を考えてください。\n"
+        f"また返答に対する返答の例を考えてください。"
     )
 
     # Gemini APIを使ってボットの返答を取得
-    response = gemini_pro.generate_content(prompt)  # プロンプトを使って応答を生成
+    response = gemini_pro.generate_content(prompt)
 
     if response:
         return format_response_data(response.text)  # フォーマットされたデータを返す
@@ -45,14 +44,12 @@ def get_bot_response(user_input, level, follow_up_1, follow_up_2):
 def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
     responses = response_text.split("\n")  # 改行で分割と仮定
-    reply = responses[0] if len(responses) > 0 else "No reply."
-    follow_up_1 = responses[1] if len(responses) > 1 else "No follow-up response 1."
-    follow_up_2 = responses[2] if len(responses) > 2 else "No follow-up response 2."
+    answer = responses[0] if len(responses) > 0 else "No reply."
+    follow_up = responses[1] if len(responses) > 1 else "No follow-up response."  # フォローアップレスポンスを1つに変更
 
     formatted_response = {
-        "reply": reply,
-        "follow_up_1": follow_up_1,
-        "follow_up_2": follow_up_2
+        "answer": answer,  # user_inputに対する返答を設定
+        "follow_up": follow_up  # フォローアップレスポンスを1つに変更
     }
     
     return formatted_response
