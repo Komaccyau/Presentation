@@ -1,4 +1,6 @@
 /* Start.css */
+
+
 .start-container {
   text-align: center;
   margin: auto;
@@ -6,8 +8,9 @@
 }
 
 .start-container > .MuiFormControl-root {
-  margin-bottom: 20px; /* 入力欄とスタートボタンの間隔を広げる */
+  margin-bottom: 40px; /* 入力欄とスタートボタンの間隔を広げる */
 }
+
 
 /* .difficulty-level {
   text-align: center;
