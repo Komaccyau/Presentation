@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Input from './Input';
 import Log from './Log';
+import './Chat.css'
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 

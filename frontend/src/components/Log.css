@@ -21,7 +21,7 @@
     text-align: right;
 }
 
-.input_log:before {
+/* .input_log:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -29,7 +29,7 @@
     margin-top: -15px;
     border: 15px solid transparent;
     border-left: 15px solid #e0edff;
-  }
+  } */
 
 .bot_log {
     position: relative;
@@ -47,7 +47,7 @@
     text-align: left;
 }
 
-.bot_log:before {
+/* .bot_log:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -55,4 +55,4 @@
     margin-top: -15px;
     border: 15px solid transparent;
     border-left: 15px solid #e0edff;
-  }
+  } */
