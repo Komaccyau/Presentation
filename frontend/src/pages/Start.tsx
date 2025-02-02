@@ -14,7 +14,7 @@ const Start: React.FC = () => {
 
   return (
     <div className="start-container">
-      <h1>TALK TYPINGへ   ようこそ！</h1>
+      <h1>　　　　　　　　　　へ ようこそ！</h1>
       <FormControl variant="outlined" fullWidth>
         <InputLabel>英語レベルを選択</InputLabel>
         <Select
@@ -29,7 +29,7 @@ const Start: React.FC = () => {
         </Select>
       </FormControl>
       <Button variant="contained" color="primary" onClick={handleStart}>
-        スタート
+        Let's Start
       </Button>
     </div>
   );

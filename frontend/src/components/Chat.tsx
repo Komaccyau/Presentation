@@ -56,7 +56,7 @@ const Chat: React.FC = () => {
       height: '100vh',
       width: '100vw',
     }}>
-      <Box sx={{ flex: 1, overflowY: 'auto', backgroundColor: '#e6e6fa' }}>
+      <Box className="log-color" sx={{ flex: 1, overflowY: 'auto' }}>
         <Log messages={messages} />
       </Box>
       <Box sx={{ 
