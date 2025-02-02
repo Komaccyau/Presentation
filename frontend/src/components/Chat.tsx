@@ -66,7 +66,7 @@ const Chat: React.FC = () => {
         marginTop: 'auto',
         width: '100%',
       }}>
-        <Box sx={{ width: '80vw', marginBottom: '2vh' }}>
+        <Box className="input-color" sx={{ width: '80vw', marginTop: '2vh', marginBottom: '2vh' }}>
           <Input onSendMessage={handleSendMessage} />
         </Box>
       </Box>
