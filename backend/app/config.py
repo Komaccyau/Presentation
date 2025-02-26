@@ -11,4 +11,4 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Gemini APIモデルの設定
-gemini_pro = genai.GenerativeModel("gemini-pro")
+gemini_pro = genai.GenerativeModel("models/gemini-2.0-flash")
