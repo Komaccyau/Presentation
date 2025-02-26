@@ -25,18 +25,21 @@ def chat():
         return jsonify({"error": str(e)}), 500  # エラーメッセージを返す
 
 def get_bot_response(user_input, level):
-    # プロンプトを設定
     prompt = (
-        f"You are a veteran English teacher from the UK who has been teaching English to Japanese people for 20 years. Please reply to {user_input} in English. Please reply with a topic that will expand on the conversation to make it easier for the user to send the next message. Then reply and give an example of a response to the topic that you replied to. Also, try to keep the conversation to the {level}.The format of the reply should start with the content of the reply to {user_input}, followed by a line break, and immediately after the line break, reply with the content of the example response to the topic that you replied to that will expand on the conversation."
+        f"You are a veteran English teacher from the UK who has been teaching English to Japanese people for 20 years. Please reply to {user_input} in English. Please reply with a topic that will expand on the conversation to make it easier for the user to send the next message. Then reply and give an example of a response to the topic that you replied to. Also, try to keep the conversation to the {level}."
     )
 
     # Gemini APIを使ってボットの返答を取得
-    response = gemini_pro.generate_content(prompt)
+    try:
+        response = gemini_pro.generate_content(prompt)
+        if response is None or 'error' in response:
+            raise Exception("Failed to retrieve bot response.")
+    except Exception as e:
+        print(f"Error during API call: {str(e)}")
+        raise  # 上位で処理するために再スロー
 
-    if response:
-        return format_response_data(response.text)  # フォーマットされたデータを返す
-    else:
-        return {"error": "Failed to retrieve bot response."}
+    return format_response_data(response.text)
+
 
 def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
