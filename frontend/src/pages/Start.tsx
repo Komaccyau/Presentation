@@ -22,9 +22,9 @@ const Start: React.FC = () => {
           onChange={(e) => setLevel(e.target.value)}
           label="英語レベルを選択"
         >
-          <MenuItem value="中学英語レベル">中学英語レベル</MenuItem>
-          <MenuItem value="高校英語レベル">高校英語レベル</MenuItem>
-          <MenuItem value="大学英語レベル">大学英語レベル</MenuItem>
+          <MenuItem value="中学英語レベル">中学入試英語レベル</MenuItem>
+          <MenuItem value="高校英語レベル">高校入試英語レベル</MenuItem>
+          <MenuItem value="大学英語レベル">大学入試英語レベル</MenuItem>
           <MenuItem value="日常会話レベル">日常会話レベル</MenuItem>
         </Select>
       </FormControl>
