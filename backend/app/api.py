@@ -42,11 +42,10 @@ def format_response_data(response_text):
     # 返答を分割して、返信とその返信の返信を取得します
     responses = response_text.split("\n")  # 改行で分割と仮定
     answer = responses[0] if len(responses) > 0 else "No reply."
-    follow_up = responses[1] if len(responses) > 1 else "No follow-up response."  # フォローアップレスポンスを1つに変更
+    
 
     formatted_response = {
         "answer": answer,  # user_inputに対する返答を設定
-        "follow_up": follow_up  # フォローアップレスポンスを1つに変更
     }
     
     return formatted_response
